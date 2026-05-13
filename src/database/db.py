@@ -1,7 +1,5 @@
 # Create database fundament
 
-import contextlib
-
 from sqlalchemy.ext.asyncio import (
     create_async_engine,
     async_sessionmaker,
@@ -15,15 +13,12 @@ engine = create_async_engine(config.DB_URL)
 
 SessionLocal = async_sessionmaker(
     bind=engine,
+    class_=AsyncSession,
     autoflush=False,
     autocommit=False,
+    expire_on_commit=False,
 )
 
-
-@contextlib.asynccontextmanager
 async def get_db():
-    session = SessionLocal()
-    try:
+    async with SessionLocal() as session:
         yield session
-    finally:
-        await session.close()

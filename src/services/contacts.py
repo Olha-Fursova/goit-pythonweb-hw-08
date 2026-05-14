@@ -20,4 +20,4 @@ class ContactService:
         return await self.contact_repository.update_contact(contact_id, body)
 
     async def remove_contact(self, contact_id: int):
-        return await self.note_repository.remove_note(contact_id)
+        return await self.note_repository.remove_contact(contact_id)

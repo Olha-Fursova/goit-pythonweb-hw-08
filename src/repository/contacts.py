@@ -21,11 +21,11 @@ class ContactRepository:
         return contact.scalar_one_or_none()
 
     async def create_contact(self, body: ContactModel) -> Contact:
-        contact = Contact(body)
+        contact = Contact(**body.model_dump())
         self.db.add(contact)
         await self.db.commit()
         await self.db.refresh(contact)
-        return await self.get_contact_by_id(contact.id)
+        return contact
 
     async def remove_contact(self, contact_id: int) -> Contact | None:
         contact = await self.get_contact_by_id(contact_id)
@@ -39,7 +39,7 @@ class ContactRepository:
     ) -> Contact | None:
         contact = await self.get_contact_by_id(contact_id)
         if contact:
-            for key, value in body.items():
+            for key, value in body.model_dump().items():
                 setattr(contact, key, value)
 
             await self.db.commit()

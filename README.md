@@ -18,36 +18,36 @@ The project supports full CRUD functionality, contact search, birthday reminders
 
 # Project Structure
 
-goit-pythonweb-hw-08/
-│
-├── migrations/
-│
-├── src/
-│   ├── api/
-|   |   ├── utils.py
-│   │   └── contacts.py
-│   │
-│   ├── conf/
-│   │   └── config.py
-│   │
-│   ├── database/
-│   │   ├── db.py
-│   │   └── models.py
-│   │
-│   ├── repository/
-│   │   └── contacts.py
-│   │
-│   ├── services/
-│   │   └── contacts.py
-│   │
-│   └── schemas.py
-│
-├── alembic.ini
-├── main.py
-├── poetry.lock
-├── pyproject.toml
-└── README.md
-
+goit-pythonweb-hw-08/  \
+│  \
+├── migrations/  \
+│  \
+├── src/  \
+│   ├── api/  \
+|   |   ├── utils.py  \
+│   │   └── contacts.py  \
+│   │  \
+│   ├── conf/  \
+│   │   └── config.py  \
+│   │  \
+│   ├── database/  \
+│   │   ├── db.py  \
+│   │   └── models.py  \
+│   │  \
+│   ├── repository/  \
+│   │   └── contacts.py  \
+│   │  \
+│   ├── services/  \
+│   │   └── contacts.py  \
+│   │  \
+│   └── schemas.py  \
+│  \
+├── alembic.ini  \
+├── main.py  \
+├── poetry.lock  \
+├── pyproject.toml  \
+└── README.md  \
+  
 ## The API supports:
 
 - Create a contact
@@ -166,3 +166,7 @@ The application uses:
 - asynchronous FastAPI endpoints
 
 This improves performance and scalability.
+
+## Author
+
+Student project for GoIT Python Web course.

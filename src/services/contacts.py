@@ -24,3 +24,6 @@ class ContactService:
     
     async def search_contacts(self, query: str):
         return await self.contact_repository.search_contacts(query)
+    
+    async def upcoming_birthdays(self):
+        return await self.contact_repository.upcoming_birthdays()

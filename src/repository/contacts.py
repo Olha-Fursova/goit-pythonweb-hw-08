@@ -1,4 +1,5 @@
 from typing import List
+from datetime import date, timedelta
 
 from sqlalchemy import select, or_
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -59,3 +60,21 @@ class ContactRepository:
         contacts = await self.db.execute(stmt)
 
         return contacts.scalars().all()
+    
+    async def upcoming_birthdays(self) -> List[Contact]:
+
+        today = date.today()
+        next_week = today + timedelta(days=7)
+
+        contacts = await self.db.execute(select(Contact))
+
+        result = []
+
+        for contact in contacts.scalars().all():
+
+            birthday_this_year = contact.birthday.replace(year=today.year)
+
+            if today <= birthday_this_year <= next_week:
+                result.append(contact)
+
+        return result

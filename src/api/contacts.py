@@ -53,3 +53,14 @@ async def remove_contact(contact_id: int, db: AsyncSession = Depends(get_db)):
             status_code=status.HTTP_404_NOT_FOUND, detail="Contact not found"
         )
     return contact
+
+@router.get("/search/", response_model=List[ContactResponse])
+async def search_contacts(
+    query: str,
+    db: AsyncSession = Depends(get_db)
+):
+    contact_service = ContactService(db)
+
+    contacts = await contact_service.search_contacts(query)
+
+    return contacts
